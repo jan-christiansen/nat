@@ -1,21 +1,29 @@
-Name:                     nat
-Version:                  0.2
-stability:                 alpha
-Description:            Implementation of natural numbers and integers by a binary
-                                representation. All functions are supposed to be as non-strict as
-                                possible. Furthermore the implementation is supposed to be 
-                                reasonable efficient (in comparison to peano numbers). This
-                                implementation is inspired by a similar approach in the functional
-                                logic programming language Curry.
-Synopsis:                 Lazy binary natural numbers
-License:                   BSD3
-Author:                    Andres Loeh, Frank Huch, Jan Christiansen    
-Maintainer:              Jan Christiansen <jac@informatik.uni-kiel.de>
-homepage:              http://www-ps.informatik.uni-kiel.de/currywiki/tools/strictcheck
-Category:                 Data, Math
-Build-Depends:       base
-Exposed-modules:  Data.Number.Nat Data.Number.Nat1 Data.Number.Int
-ghc-options:          -Wall
-build-type:              Simple
+name:                     nat
+version:                  0.3
+cabal-version:            >= 1.6
+stability:                alpha
+description:              Implementation of natural numbers and integers by a
+                          binary representation. All functions are supposed to
+                          be as non-strict as possible. Furthermore the
+                          implementation is supposed to be reasonable efficient
+                          (in comparison to peano numbers). This implementation
+                          is inspired by a similar approach in the functional
+                          logic programming language Curry.
+synopsis:                 Lazy binary natural numbers
+license:                  BSD3
+license-file:             LICENSE
+author:                   Jan Christiansen
+maintainer:               Jan Christiansen <info@monoid-it.de>
+category:                 Data, Math
+build-type:               Simple
+extra-source-files:       Tests.hs
+bug-reports:              https://github.com/plancalculus/nat/issues
+source-repository head
+  type:      git
+  location:  https://github.com/plancalculus/nat.git
 
-extra-source-files: Tests.hs
+
+library
+  build-depends:	  base
+  ghc-options:            -Wall
+  exposed-modules:        Data.Number.Nat, Data.Number.Nat1, Data.Number.Int
