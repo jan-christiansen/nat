@@ -1,5 +1,5 @@
-import Test.QuickCheck
-import Text.Printf
+import Test.QuickCheck (quickCheck, (==>), Property)
+import Text.Printf (printf)
 import Data.Number.Nat1
 import Data.Number.Nat
 import qualified Data.Number.Int as Int
@@ -58,16 +58,17 @@ prop_divInt m n =
 
 
 tests = 
-  [("mult :: Nat1",test (prop_binOpNat1 (*) (*) areNat1s))
-  ,("mult :: Nat",test (prop_binOpNat (*) (*) areNats))
-  ,("mult :: Int",test (prop_binOpInt (*) (*)))
-  ,("add :: Nat1",test (prop_binOpNat1 (+) (+) areNat1s))
-  ,("add :: Nat",test (prop_binOpNat (+) (+) areNats))
-  ,("add :: Int",test (prop_binOpInt (+) (+)))
-  ,("minus :: Nat1",test (prop_binOpNat1 (-) (-) posNat1))
-  ,("minus :: Nat",test (prop_binOpNat (-) (-) posNat))
-  ,("minus :: Int",test (prop_binOpInt (-) (-)))
---   ,("div :: Nat1",test (prop_binOpNat1 div div posNat1))
-  ,("div :: Nat",test prop_divNat)
-  ,("div :: Int",test prop_divInt)
+  [("mult :: Nat1",quickCheck (prop_binOpNat1 (*) (*) areNat1s))
+  ,("mult :: Nat",quickCheck (prop_binOpNat (*) (*) areNats))
+  ,("mult :: Int",quickCheck (prop_binOpInt (*) (*)))
+  ,("add :: Nat1",quickCheck (prop_binOpNat1 (+) (+) areNat1s))
+  ,("add :: Nat",quickCheck (prop_binOpNat (+) (+) areNats))
+  ,("add :: Int",quickCheck (prop_binOpInt (+) (+)))
+  ,("minus :: Nat1",quickCheck (prop_binOpNat1 (-) (-) posNat1))
+  ,("minus :: Nat",quickCheck (prop_binOpNat (-) (-) posNat))
+  ,("minus :: Int",quickCheck (prop_binOpInt (-) (-)))
+--   ,("div :: Nat1",quickCheck (prop_binOpNat1 div div posNat1))
+  ,("div :: Nat",quickCheck prop_divNat)
+  ,("div :: Int",quickCheck prop_divInt)
   ]
+

@@ -182,7 +182,7 @@ lengthNum :: (Enum n,Num n) => [a] -> n
 lengthNum []     = 0
 lengthNum (_:xs) = succ (lengthNum xs)
 
-takeNum :: (Enum n,Num n) => n -> [a] -> [a]
+takeNum :: (Eq n,Enum n,Num n) => n -> [a] -> [a]
 takeNum n l
   | n==0      = []
   | otherwise = takeNum' l 
@@ -190,7 +190,7 @@ takeNum n l
   takeNum' []     = []
   takeNum' (x:xs) = x:takeNum (pred n) xs
 
-dropNum :: (Enum n,Num n) => n -> [a] -> [a]
+dropNum :: (Eq n,Enum n,Num n) => n -> [a] -> [a]
 dropNum n l
   | n==0      = l
   | otherwise = dropNum' l
@@ -198,7 +198,7 @@ dropNum n l
   dropNum' []     = []
   dropNum' (_:xs) = dropNum (pred n) xs
 
-replicateNum :: (Enum n,Num n) => n -> a -> [a]
+replicateNum :: (Eq n,Enum n,Num n) => n -> a -> [a]
 replicateNum n = takeNum n . repeat
 
 
